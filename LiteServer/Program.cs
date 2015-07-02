@@ -1,9 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using litehttp;
+using litehttp.Extensions;
+using litehttp.Http;
+
 
 namespace LiteServer
 {
@@ -14,10 +13,15 @@ namespace LiteServer
            LiteHttp.Create()
                 .Get("/", () => "hello")
                 .Get("time", () => DateTime.Now)
-                .StaticServe(@"C:\mysite")
-                .Listen(80);
+                .Use((req, resp) => { } )
+                .Static(@"C:\mysite")
+                .Listen(port: 80);
         }
+
     }
 
-   
+    public class InsertIdDto
+    {
+        public int Id { get; set; }
+    }
 }

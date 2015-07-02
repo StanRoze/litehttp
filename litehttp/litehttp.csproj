@@ -45,19 +45,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FluentLiteHttpServer.cs" />
-    <Compile Include="IFluentLiteServer.cs" />
-    <Compile Include="ILiteHttpServer.cs" />
+    <Compile Include="Http\LiteRequest.cs" />
+    <Compile Include="ILiteServer.cs" />
     <Compile Include="LiteHttp.cs" />
-    <Compile Include="LiteHttpServerConfiguration.cs" />
-    <Compile Include="LiteServer.cs" />
+    <Compile Include="Runtime\ActionInvoker.cs" />
+    <Compile Include="Http\LiteResponse.cs" />
+    <Compile Include="Runtime\LiteServerConfiguration.cs" />
+    <Compile Include="Extensions\LiteHttpServerExtensions.cs" />
+    <Compile Include="Runtime\LiteServer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Framework\LiteRequestEngine.cs" />
     <Compile Include="Framework\Router.cs" />
     <Compile Include="Framework\StaticServer.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Extensions\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
