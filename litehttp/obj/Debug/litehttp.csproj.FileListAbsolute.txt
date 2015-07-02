@@ -1,5 +1,0 @@
-c:\users\stanr_000\documents\visual studio 2013\Projects\litehttp\litehttp\bin\Debug\litehttp.dll
-c:\users\stanr_000\documents\visual studio 2013\Projects\litehttp\litehttp\bin\Debug\litehttp.pdb
-c:\users\stanr_000\documents\visual studio 2013\Projects\litehttp\litehttp\obj\Debug\litehttp.csprojResolveAssemblyReference.cache
-c:\users\stanr_000\documents\visual studio 2013\Projects\litehttp\litehttp\obj\Debug\litehttp.dll
-c:\users\stanr_000\documents\visual studio 2013\Projects\litehttp\litehttp\obj\Debug\litehttp.pdb
