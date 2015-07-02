@@ -10,17 +10,19 @@ namespace litehttp.Runtime
     {
         protected LiteRequestEngine Mapper;
         protected HttpListener Listener;
+        public ILiteRouter Router { get; private set; }
 
         public LiteServerConfiguration Configuration { get; private set; }
 
         public LiteHttpServer(LiteServerConfiguration config)
         {
             Configuration = config;
+            Router = new Router();
         }
 
         private void InitializeFromConfig()
         {
-            Mapper = new LiteRequestEngine(Configuration);
+            Mapper = new LiteRequestEngine(Configuration, Router);
         }
 
         public LiteHttpServer() : this(LiteServerConfiguration.Default)
@@ -72,6 +74,9 @@ namespace litehttp.Runtime
             //process request on another task.
             Task.Factory.StartNew( () => Mapper.ProcessRequestAsync(context));
         }
-      
+
+
+
+        
     }
 }

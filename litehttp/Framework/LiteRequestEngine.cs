@@ -1,5 +1,6 @@
 ﻿using System.IO;
 using System.Net;
+using System.Text;
 using System.Threading.Tasks;
 using litehttp.Runtime;
 
@@ -9,11 +10,20 @@ namespace litehttp.Framework
     {
         private readonly LiteServerConfiguration _config;
         private readonly StaticServer _staticServer;
+        private LiteServerConfiguration Configuration;
+        private ILiteRouter Router;
 
         public LiteRequestEngine(LiteServerConfiguration config)
         {
             _config = config;
             _staticServer = new StaticServer(config.RootServePath);
+        }
+
+        public LiteRequestEngine(LiteServerConfiguration Configuration, ILiteRouter Router)
+        {
+            // TODO: Complete member initialization
+            this.Configuration = Configuration;
+            this.Router = Router;
         }
 
         internal async Task ProcessRequestAsync(HttpListenerContext context)
@@ -27,6 +37,14 @@ namespace litehttp.Framework
                 return;
             }
 
+            var liteRequest = LiteRequestConverter.FromHttpListenerRequest(req);
+            var liteResponse = LiteResponseConverter.FromHttpListenerResponse(req);
+
+            foreach (var middleWare in Router.GetMiddleWare())
+            {
+                middleWare(liteRequest, liteResponse);
+            }
+
             ////to do remove to-lower use Invariant Compare for Keys
             //var absPath = req.Url.AbsolutePath.ToLower();
 
@@ -35,10 +53,15 @@ namespace litehttp.Framework
             //var type = executor.Item1;
             //var func = executor.Item2;
 
-            //var result = func.DynamicInvoke().ToString();
+            
 
             //resp.ContentLength64 = result.Length;
             //await resp.OutputStream.WriteAsync(Encoding.Default.GetBytes(result), 0, result.Length);
+
+            resp.StatusCode = liteResponse.StatusCode;
+            var result = "stan";
+            resp.ContentLength64 = result.Length;
+            await resp.OutputStream.WriteAsync(Encoding.Default.GetBytes(result), 0, result.Length);
         }
 
         private async Task ServeStaticResource(HttpListenerRequest request, HttpListenerResponse response)

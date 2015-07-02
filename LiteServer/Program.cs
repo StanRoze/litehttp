@@ -11,16 +11,13 @@ namespace LiteServer
         static void Main(string[] args)
         {
            LiteHttp.Create()
-                .Get("/", () => "hello")
-                .Get("time", () => DateTime.Now)
-                .Use((req, resp) => { } )
-                .Static(@"C:\mysite")
+                .Use((req, res) => res.Ok() )
                 .Listen(port: 80);
         }
 
     }
 
-    public class InsertIdDto
+    public class InsertIdDto : LiteRequest
     {
         public int Id { get; set; }
     }

@@ -14,12 +14,9 @@
             this.StatusCode = statusCode;
         }
 
-        public static LiteResponse Ok
+        public void Ok()
         {
-            get
-            {
-                return new LiteResponse(200);
-            }
+            StatusCode = 200;
         }
     }
 }

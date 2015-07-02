@@ -12,15 +12,7 @@ namespace litehttp.Runtime
 
         public string RootServePath { get; set; }
 
-        internal void AddRoute<T>(string path, Func<T> executor)
-        {
-           
-        }
-
-        private void AddRequestRoute(string path, Func<LiteResponse> executor) 
-        {
-            
-        }
+       
     }
 
 
