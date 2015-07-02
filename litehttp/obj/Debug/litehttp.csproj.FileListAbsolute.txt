@@ -1,0 +1,4 @@
+C:\litehttp\litehttp\litehttp\bin\Debug\litehttp.dll
+C:\litehttp\litehttp\litehttp\bin\Debug\litehttp.pdb
+C:\litehttp\litehttp\litehttp\obj\Debug\litehttp.dll
+C:\litehttp\litehttp\litehttp\obj\Debug\litehttp.pdb

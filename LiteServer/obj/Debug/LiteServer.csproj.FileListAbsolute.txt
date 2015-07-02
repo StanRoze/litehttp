@@ -1,0 +1,8 @@
+C:\litehttp\litehttp\LiteServer\bin\Debug\LiteServer.exe.config
+C:\litehttp\litehttp\LiteServer\bin\Debug\LiteServer.exe
+C:\litehttp\litehttp\LiteServer\bin\Debug\LiteServer.pdb
+C:\litehttp\litehttp\LiteServer\bin\Debug\litehttp.dll
+C:\litehttp\litehttp\LiteServer\bin\Debug\litehttp.pdb
+C:\litehttp\litehttp\LiteServer\obj\Debug\LiteServer.csprojResolveAssemblyReference.cache
+C:\litehttp\litehttp\LiteServer\obj\Debug\LiteServer.exe
+C:\litehttp\litehttp\LiteServer\obj\Debug\LiteServer.pdb
