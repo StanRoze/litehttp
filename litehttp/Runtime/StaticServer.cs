@@ -14,6 +14,7 @@ namespace litehttp.Runtime
             {
                 path = path + @"\";
             }
+
             _path = new Uri(path);
         }
 
