@@ -1,8 +1,0 @@
-c:\Users\stanr_000\documents\visual studio 2013\Projects\litehttp\LiteServer\bin\Debug\LiteServer.exe.config
-c:\Users\stanr_000\documents\visual studio 2013\Projects\litehttp\LiteServer\bin\Debug\LiteServer.exe
-c:\Users\stanr_000\documents\visual studio 2013\Projects\litehttp\LiteServer\bin\Debug\LiteServer.pdb
-c:\Users\stanr_000\documents\visual studio 2013\Projects\litehttp\LiteServer\bin\Debug\litehttp.dll
-c:\Users\stanr_000\documents\visual studio 2013\Projects\litehttp\LiteServer\bin\Debug\litehttp.pdb
-c:\Users\stanr_000\documents\visual studio 2013\Projects\litehttp\LiteServer\obj\Debug\LiteServer.csprojResolveAssemblyReference.cache
-c:\Users\stanr_000\documents\visual studio 2013\Projects\litehttp\LiteServer\obj\Debug\LiteServer.exe
-c:\Users\stanr_000\documents\visual studio 2013\Projects\litehttp\LiteServer\obj\Debug\LiteServer.pdb
