@@ -11,7 +11,9 @@ namespace LiteServer
     {
         static void Main(string[] args)
         {
-           LiteHttp.ToFluent()
+           LiteHttp.Create()
+                .Get("/", () => "hello")
+                .Get("time", () => DateTime.Now)
                 .StaticServe(@"C:\mysite")
                 .Listen(80);
         }

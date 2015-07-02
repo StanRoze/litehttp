@@ -7,10 +7,15 @@ namespace litehttp
     {
         public static LiteHttpServerConfiguration Default
         {
-            get { return null; }
+            get { return new LiteHttpServerConfiguration(); }
         }
 
         public string RootServePath { get; set; }
+
+        internal void AddRoute<T>(string path, Func<T> executor)
+        {
+            throw new NotImplementedException();
+        }
     }
 
 

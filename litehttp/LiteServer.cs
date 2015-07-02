@@ -2,25 +2,25 @@ using System;
 using System.Diagnostics.Contracts;
 using System.Net;
 using System.Threading.Tasks;
-using litehttp.Runtime;
+using litehttp.Framework;
 
 namespace litehttp
 {
     internal class LiteHttpServer : ILiteHttpServer
     {
-        protected readonly LiteHttpServerConfiguration Config;
-        protected RequestProcessor Mapper;
+        protected LiteRequestEngine Mapper;
         protected HttpListener Listener;
+
+        public LiteHttpServerConfiguration Configuration { get; private set; }
 
         public LiteHttpServer(LiteHttpServerConfiguration config)
         {
-            Config = config;
-            InitializeFromConfig();
+            Configuration = config;
         }
 
         private void InitializeFromConfig()
         {
-            Mapper = new RequestProcessor(Config);
+            Mapper = new LiteRequestEngine(Configuration);
         }
 
         public LiteHttpServer() : this(LiteHttpServerConfiguration.Default)
@@ -30,6 +30,7 @@ namespace litehttp
 
         public void Listen(int port)
         {
+            InitializeFromConfig();
             using (Listener = new HttpListener())
             {
                 Listener.Prefixes.Add(string.Format("http://localhost:{0}/", port));
@@ -73,6 +74,8 @@ namespace litehttp
 
         }
 
-       
+
+
+      
     }
 }
