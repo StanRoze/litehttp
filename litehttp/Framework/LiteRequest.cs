@@ -1,6 +1,4 @@
-using System.Net;
-
-namespace litehttp.Http
+namespace litehttp.Framework
 {
     public class LiteRequest
     {

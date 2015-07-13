@@ -3,26 +3,22 @@ using System.Diagnostics.Contracts;
 using System.Net;
 using System.Threading.Tasks;
 using litehttp.Framework;
+using litehttp.Middleware;
 
-namespace litehttp.Runtime
+namespace litehttp
 {
-    internal class LiteHttpServer : ILiteServer
+    public class LiteHttpServer 
     {
-        protected LiteRequestEngine Mapper;
+        private LiteRequestEngine Mapper;
         protected HttpListener Listener;
-        public ILiteRouter Router { get; private set; }
-
+        
         public LiteServerConfiguration Configuration { get; private set; }
+        public MiddleWareCollection Middleware { get; private set; }
 
         public LiteHttpServer(LiteServerConfiguration config)
         {
             Configuration = config;
-            Router = new Router();
-        }
-
-        private void InitializeFromConfig()
-        {
-            Mapper = new LiteRequestEngine(Configuration, Router);
+            Middleware = new MiddleWareCollection();
         }
 
         public LiteHttpServer() : this(LiteServerConfiguration.Default)
@@ -32,7 +28,9 @@ namespace litehttp.Runtime
 
         public void Listen(int port = 80)
         {
-            InitializeFromConfig();
+            //create middle ware
+            Mapper = new LiteRequestEngine(Middleware.Create());
+
             using (Listener = new HttpListener())
             {
                 Listener.Prefixes.Add(string.Format("http://localhost:{0}/", port));
@@ -74,9 +72,6 @@ namespace litehttp.Runtime
             //process request on another task.
             Task.Factory.StartNew( () => Mapper.ProcessRequestAsync(context));
         }
-
-
-
         
     }
 }

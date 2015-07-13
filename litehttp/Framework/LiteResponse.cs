@@ -1,4 +1,4 @@
-﻿namespace litehttp.Http
+﻿namespace litehttp.Framework
 {
     public class LiteResponse
     {

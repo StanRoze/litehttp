@@ -52,20 +52,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Framework\LiteRequestConverter.cs" />
-    <Compile Include="Framework\LiteResponseConverter.cs" />
-    <Compile Include="Http\LiteRequest.cs" />
-    <Compile Include="ILiteServer.cs" />
+    <Compile Include="Extensions\HttpListenerResponseExtensions.cs" />
+    <Compile Include="Framework\ILiteContext.cs" />
+    <Compile Include="Framework\ILiteRequest.cs" />
+    <Compile Include="Framework\ILiteResponse.cs" />
+    <Compile Include="Framework\LiteContext.cs" />
+    <Compile Include="Middleware\MiddleWareCollection.cs" />
+    <Compile Include="Middleware\EmptyMiddleWare.cs" />
+    <Compile Include="Middleware\LiteMiddleWare.cs" />
+    <Compile Include="Framework\LiteRequest.cs" />
     <Compile Include="LiteHttp.cs" />
-    <Compile Include="Runtime\ActionInvoker.cs" />
-    <Compile Include="Http\LiteResponse.cs" />
-    <Compile Include="Runtime\LiteServerConfiguration.cs" />
+    <Compile Include="Framework\LiteResponse.cs" />
+    <Compile Include="Middleware\GzipMiddleWare.cs" />
+    <Compile Include="Framework\LiteServerConfiguration.cs" />
     <Compile Include="Extensions\LiteHttpServerExtensions.cs" />
-    <Compile Include="Runtime\LiteServer.cs" />
+    <Compile Include="LiteServer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Framework\LiteRequestEngine.cs" />
-    <Compile Include="Framework\Router.cs" />
-    <Compile Include="Framework\StaticServer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

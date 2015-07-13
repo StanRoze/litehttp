@@ -1,7 +1,4 @@
-﻿using System;
-using litehttp.Http;
-
-namespace litehttp.Runtime
+﻿namespace litehttp.Framework
 {
     public class LiteServerConfiguration
     {

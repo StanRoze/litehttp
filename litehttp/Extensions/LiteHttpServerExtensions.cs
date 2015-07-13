@@ -1,16 +1,13 @@
-﻿using System;
-using System.Diagnostics.Contracts;
-using System.IO;
-using litehttp.Http;
-using Microsoft.Owin;
+﻿using litehttp.Middleware;
 
+// ReSharper disable once CheckNamespace
 namespace litehttp.Extensions
 {
     public static class LiteHttpServerExtensions
     {
-        public static ILiteServer Use(this ILiteServer server, Action<LiteRequest, LiteResponse> middleware)
+        public static LiteHttpServer Use<T>(this LiteHttpServer server) where T : LiteMiddleWare
         {
-            server.Router.Use(middleware);
+            server.Middleware.Add<T>();
             return server;
         }
     }

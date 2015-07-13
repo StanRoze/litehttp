@@ -1,7 +1,11 @@
 ﻿using System;
+using System.Linq;
+using System.Runtime.InteropServices;
+using System.Text;
 using litehttp;
 using litehttp.Extensions;
-using litehttp.Http;
+using litehttp.Framework;
+using litehttp.Middleware;
 
 
 namespace LiteServer
@@ -11,8 +15,9 @@ namespace LiteServer
         static void Main(string[] args)
         {
            LiteHttp.Create()
-                .Use((req, res) => res.Ok() )
-                .Listen(port: 80);
+                 .Use<DiagnosticMiddleWare>()
+                 .Use<GzipMiddleWare>()
+                 .Listen(port: 80);
         }
 
     }
