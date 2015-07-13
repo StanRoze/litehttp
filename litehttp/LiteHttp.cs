@@ -1,16 +1,17 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
+﻿using litehttp.Framework;
 
 namespace litehttp
 {
     public static class LiteHttp
     {
-   
-        public static IFluentLiteServer ToFluent()
+        public static LiteHttpServer Create(LiteServerConfiguration configuration)
         {
-            return new FluentLiteHttpServer();
+            return new LiteHttpServer(configuration);
+        }
+
+        public static LiteHttpServer Create()
+        {
+            return new LiteHttpServer();
         }
 
     }

@@ -1,9 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
-using System.Threading.Tasks;
 using litehttp;
+using litehttp.Extensions;
+using litehttp.Framework;
+using litehttp.Middleware;
+
 
 namespace LiteServer
 {
@@ -11,11 +14,16 @@ namespace LiteServer
     {
         static void Main(string[] args)
         {
-           LiteHttp.ToFluent()
-                .StaticServe(@"C:\mysite")
-                .Listen(80);
+           LiteHttp.Create()
+                 .Use<DiagnosticMiddleWare>()
+                 .Use<GzipMiddleWare>()
+                 .Listen(port: 80);
         }
+
     }
 
-   
+    public class InsertIdDto : LiteRequest
+    {
+        public int Id { get; set; }
+    }
 }
