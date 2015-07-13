@@ -21,9 +21,4 @@ namespace LiteServer
         }
 
     }
-
-    public class InsertIdDto : LiteRequest
-    {
-        public int Id { get; set; }
-    }
 }

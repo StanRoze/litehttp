@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -18,10 +19,26 @@ namespace litehttp.Framework
         }
 
         internal async Task ProcessRequestAsync(HttpListenerContext context)
-        {
-            var litecontext = LiteContext.Create(context);
-            await _seedWare.Use(litecontext);
-            context.Response.Close();
-        }
+       {
+            try
+            {
+                Console.WriteLine("[LiteServer] Processing request from {0}", context.Request.Url);
+                var litecontext = LiteContext.Create(context);
+                try
+                {
+                    await _seedWare.Use(litecontext);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                }
+
+                await litecontext.Response.CloseAsync();
+            }
+            catch (Exception ex)
+            {
+                context.Response.Abort();
+            }
+       }
     }
 }

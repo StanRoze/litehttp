@@ -1,22 +1,50 @@
-﻿namespace litehttp.Framework
+﻿using System;
+using System.IO;
+using System.Net;
+using System.Threading.Tasks;
+
+namespace litehttp.Framework
 {
-    public class LiteResponse
+    internal class LiteResponse : ILiteResponse
     {
-        public int StatusCode { get; private set; }
+        private readonly HttpListenerResponse _originalResponse;
+        private readonly Stream _originalStream;
 
-        public LiteResponse()
+        public int StatusCode
         {
-            
+            get { return _originalResponse.StatusCode; }
+            set { _originalResponse.StatusCode = value; }
         }
 
-        public LiteResponse(int statusCode)
+        public System.IO.Stream Body { get; set; }
+
+        public LiteResponse(HttpListenerResponse originalResponse)
         {
-            this.StatusCode = statusCode;
+            _originalResponse = originalResponse;
+            _originalStream = originalResponse.OutputStream;
         }
 
-        public void Ok()
+        public async Task CloseAsync()
         {
-            StatusCode = 200;
+            try
+            {
+                using (_originalStream)
+                using (Body)
+                {
+                    //if (Body.CanSeek)
+                    //    Body.Seek(0, SeekOrigin.Begin);
+
+                    await Body.CopyToAsync(_originalStream);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                _originalResponse.Close();
+            }
         }
     }
 }

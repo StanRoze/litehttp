@@ -1,7 +1,12 @@
+using System.Net;
+
 namespace litehttp.Framework
 {
-    public class LiteRequest
+    internal class LiteRequest : ILiteRequest
     {
-        
+        public LiteRequest(HttpListenerRequest originalRequest)
+        {
+            
+        }
     }
 }

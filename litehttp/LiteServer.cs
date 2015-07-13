@@ -1,5 +1,6 @@
 using System;
 using System.Diagnostics.Contracts;
+using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using litehttp.Framework;
@@ -35,7 +36,7 @@ namespace litehttp
             {
                 Listener.Prefixes.Add(string.Format("http://localhost:{0}/", port));
                 Listener.Start();
-
+                Console.WriteLine("[LiteServer] Listening on {0}", Listener.Prefixes.FirstOrDefault());
                 OffLoadRequestThread();
                 WaitForShutDown();
             }

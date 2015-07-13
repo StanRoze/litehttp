@@ -7,7 +7,11 @@ namespace litehttp.Framework
 
         internal static LiteContext Create(System.Net.HttpListenerContext context)
         {
-            return null;
+            return new LiteContext()
+            {
+                Request = new LiteRequest(context.Request),
+                Response = new LiteResponse(context.Response)
+            };
         }
     }
 }
